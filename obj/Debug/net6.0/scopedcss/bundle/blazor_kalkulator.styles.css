@@ -1,0 +1,202 @@
+/* /Pages/Index.razor.rz.scp.css */
+.calculator[b-ee1t1wkrw9] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 12px;
+    max-width: 310px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+.display[b-ee1t1wkrw9] {
+    grid-column: span 4;
+    background-color: bisque;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 265px;
+    font-size: 1.5em;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.row[b-ee1t1wkrw9] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 3px;
+    justify-items: center;
+}
+
+button[b-ee1t1wkrw9] {
+    grid-column: span 1;
+    padding: 25px;
+    font-size: 1.6em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+.dec[b-ee1t1wkrw9]{
+    padding: 29.5px;
+
+}
+
+button:hover[b-ee1t1wkrw9] {
+        background-color: #ddd;
+}
+
+button:active[b-ee1t1wkrw9] {
+        background-color: #ccc;
+}
+.redbtn[b-ee1t1wkrw9] {
+    background-color:red;
+}
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-pf82qk88lk] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-pf82qk88lk] {
+    flex: 1;
+}
+
+.sidebar[b-pf82qk88lk] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-pf82qk88lk] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-pf82qk88lk]  a, .top-row[b-pf82qk88lk]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-pf82qk88lk]  a:hover, .top-row[b-pf82qk88lk]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-pf82qk88lk]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-pf82qk88lk] {
+        display: none;
+    }
+
+    .top-row.auth[b-pf82qk88lk] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-pf82qk88lk]  a, .top-row[b-pf82qk88lk]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-pf82qk88lk] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-pf82qk88lk] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-pf82qk88lk] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-pf82qk88lk]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-pf82qk88lk], article[b-pf82qk88lk] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-txmhiqzh17] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-txmhiqzh17] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-txmhiqzh17] {
+    font-size: 1.1rem;
+}
+
+.oi[b-txmhiqzh17] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-txmhiqzh17] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-txmhiqzh17] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-txmhiqzh17] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-txmhiqzh17]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-txmhiqzh17]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-txmhiqzh17]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-txmhiqzh17] {
+        display: none;
+    }
+
+    .collapse[b-txmhiqzh17] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}

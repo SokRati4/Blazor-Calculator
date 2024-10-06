@@ -1,0 +1,126 @@
+﻿@page "/"
+@using System.Globalization
+<div class="calculator">
+    <div class="display">
+        @displayValue
+    </div>
+    <div class="buttons">
+        <div class="row">
+            <button @onclick="(e) => HandleButtonClick(e, '7')">7</button>
+            <button @onclick="(e) => HandleButtonClick(e, '8')">8</button>
+            <button @onclick="(e) => HandleButtonClick(e, '9')">9</button>
+            <button @onclick="(e) => HandleButtonClick(e, '/')">/</button>
+        </div>
+        <div class="row">
+            <button @onclick="(e) => HandleButtonClick(e, '4')">4</button>
+            <button @onclick="(e) => HandleButtonClick(e, '5')">5</button>
+            <button @onclick="(e) => HandleButtonClick(e, '6')">6</button>
+            <button @onclick="(e) => HandleButtonClick(e, '*')">*</button>
+        </div>
+        <div class="row">
+            <button @onclick="(e) => HandleButtonClick(e, '1')">1</button>
+            <button @onclick="(e) => HandleButtonClick(e, '2')">2</button>
+            <button @onclick="(e) => HandleButtonClick(e, '3')">3</button>
+            <button @onclick="(e) => HandleButtonClick(e, '-')">-</button>
+        </div>
+        <div class="row">
+            <button @onclick="(e) => HandleButtonClick(e, '0')">0</button>
+            <button @onclick="(e) => HandleButtonClick(e, '.')" class="dec" >.</button>
+            <button @onclick="(e) => HandleButtonClick(e, '=')">=</button>
+            <button @onclick="(e) => HandleButtonClick(e, '+')">+</button>
+        </div>
+        <div class="row">
+            <button @onclick="(e) => HandleButtonClick(e, 'C')" class="redbtn">C</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string displayValue = "0";
+    private string currentInput = string.Empty;
+    private string currentOperator = string.Empty;
+    private double result = 0;
+
+    private void HandleButtonClick(MouseEventArgs e, object buttonValue)
+    {
+        string stringValue = buttonValue.ToString();
+        if (stringValue == "C")
+        {
+            ClearCalculator();
+        }
+        else if (stringValue == "=")
+        {
+            Calculate();
+            currentOperator = string.Empty;
+        }
+        else if (IsOperator(stringValue))
+        {
+            if (!string.IsNullOrEmpty(currentInput))
+            {
+                Calculate();
+                currentOperator = stringValue;
+                currentInput = string.Empty;
+            }
+        }
+        else
+        {
+            currentInput += stringValue;
+            UpdateDisplay();
+        }
+    }
+
+    private void Calculate()
+{
+    if (!string.IsNullOrEmpty(currentInput))
+    {
+        double input = double.Parse(currentInput, CultureInfo.InvariantCulture);
+        switch (currentOperator)
+        {
+            case "+":
+                result += input;
+                break;
+            case "-":
+                result -= input;
+                break;
+            case "*":
+                result *= input;
+                break;
+            case "/":
+                if (input != 0)
+                {
+                    result /= input;
+                }
+                else
+                {
+                    ClearCalculator();
+                    displayValue = "Bląd";
+                    return;
+                }
+                break;
+            default:
+                result = input;
+                break;
+        }
+        currentInput = result.ToString(CultureInfo.InvariantCulture);
+        UpdateDisplay();
+    }
+}
+
+    private void ClearCalculator()
+    {
+        currentInput = string.Empty;
+        currentOperator = string.Empty;
+        result = 0;
+        UpdateDisplay();
+    }
+
+    private bool IsOperator(string value)
+    {
+        return value == "+" || value == "-" || value == "*" || value == "/";
+    }
+
+    private void UpdateDisplay()
+    {
+        displayValue = string.IsNullOrEmpty(currentInput) ? "0" : currentInput;
+    }
+}
